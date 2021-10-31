@@ -50,6 +50,7 @@ docker-compose down
 
 ## Registro de reservas
 El flujo mas complejo de la aplicación es el registro de reservas, el siguiente diagrama de secuencia puede ser de mucha ayuda: 
+
 ![secuencia](https://user-images.githubusercontent.com/42575272/139563765-ea345d2e-870d-4e0a-bc8e-1e8f7c8d76b2.jpeg)
 
 En el podemos observar que el usuario al hacer una petición post para registrar una reserva, invoca el api rest del microservicio pruebaleantech. Este se encarga de en primer instancia validar  los datos enviados que vengan en los formatos correctos de acuerdo a los parametros especificados para la entidad. Si todo está en orden, el servicio procedera a encolar esa reserva mediante un message broker en kafka y respondera que 'la solicitud de reserva se hizo correctamente'. El listener de kafka se encargara de revisar esta cola de reservas una por una y persistirlas en base de datos. En caso tal de se haya podido guardar la información correctamente, el sistema enviara un correo electronico confirmando que la reserva se realizo exitsamente. De igual forma si ocurre un problema al persistir la información, se enviara un correo notificando que hubo un problema al registrar la reserva y se encolara al 'Dead letter queue'.
