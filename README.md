@@ -1,7 +1,6 @@
-# leantech-prueba
-El proyecto consiste en una prueba para la empresa Lean Tech para el cargo Java Software Developer.
+# Simple Crud Application with Spring Boot and Kafka
 
-Se opta por tomar una arquitectura de microservicios con Java y SpringBoot basandose en el problema planteado para la prueba.
+Se opta por tomar una arquitectura de microservicios con Java y SpringBoot basandose en el problema planteado para el ejercicio de prueba.
 El proyecto está en paquetes de la siguiente forma:
 
 ![estructura](https://user-images.githubusercontent.com/42575272/139563187-5d83c7fb-e63a-405e-8790-88ac08ef0cee.PNG)
@@ -55,5 +54,3 @@ El flujo mas complejo de la aplicación es el registro de reservas, el siguiente
 
 En el podemos observar que el usuario al hacer una petición post para registrar una reserva, invoca el api rest del microservicio pruebaleantech. Este se encarga de en primer instancia validar  los datos enviados que vengan en los formatos correctos de acuerdo a los parametros especificados para la entidad. Si todo está en orden, el servicio procedera a encolar esa reserva mediante un message broker en kafka y respondera que 'la solicitud de reserva se hizo correctamente'. El listener de kafka se encargara de revisar esta cola de reservas una por una y persistirlas en base de datos. En caso tal de se haya podido guardar la información correctamente, el sistema enviara un correo electronico confirmando que la reserva se realizo exitsamente. De igual forma si ocurre un problema al persistir la información, se enviara un correo notificando que hubo un problema al registrar la reserva y se encolara al 'Dead letter queue'.
 
-## Comentarios
-No está de más agradecer mucho por la oportunidad brindada. Cualquier inquietud respecto a la prueba pueden comunicarse conmigo a mi correo eléctronico. Estaré atento a cualquier inquietud o paso a seguir en caso de que todo sea positivo. Un saludo!
