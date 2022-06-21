@@ -3,8 +3,6 @@
 Se opta por tomar una arquitectura de microservicios con Java y SpringBoot basandose en el problema planteado para el ejercicio de prueba.
 El proyecto está en paquetes de la siguiente forma:
 
-![estructura](https://user-images.githubusercontent.com/42575272/139563187-5d83c7fb-e63a-405e-8790-88ac08ef0cee.PNG)
-
 - En el paquete .../commons tenemos las diferentes utilidades comunes para usar en el proyecto y las constantes para evitar tener texto quemado y reusado en el código.
 - En el paquete .../config tenemos los bean de configuración para Kafka, Swagger y Gson.
 - En el paquete .../controllers tenemos el controlador rest api con las api's para consultar todas las reservaciones, obtener por id, crear y cancelar reservación.
